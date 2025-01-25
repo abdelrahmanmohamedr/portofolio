@@ -69,7 +69,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Collapsible Sections for Certifications
+// Collapsible Sections for Projects and Certifications
 const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
 
 collapsibleHeaders.forEach(header => {
