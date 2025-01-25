@@ -5,7 +5,7 @@ navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const href = link.getAttribute('href');
-        const offsetTop = document.querySelector(href).offsetTop - 50;
+        const offsetTop = document.querySelector(href).offsetTop - 70;
 
         window.scrollTo({
             top: offsetTop,
@@ -56,8 +56,8 @@ window.addEventListener('scroll', () => {
 
     sections.forEach((section) => {
         if (
-            section.offsetTop - 60 <= scrollPos &&
-            section.offsetTop + section.offsetHeight - 60 > scrollPos
+            section.offsetTop - 80 <= scrollPos &&
+            section.offsetTop + section.offsetHeight - 80 > scrollPos
         ) {
             navLinks.forEach((link) => {
                 link.classList.remove('active');
@@ -65,6 +65,26 @@ window.addEventListener('scroll', () => {
                     link.classList.add('active');
                 }
             });
+        }
+    });
+});
+
+// Collapsible Sections for Certifications
+const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
+
+collapsibleHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+        const collapsibleContent = header.nextElementSibling;
+        const parent = header.parentElement;
+
+        parent.classList.toggle('open');
+
+        if (parent.classList.contains('open')) {
+            collapsibleContent.style.maxHeight = collapsibleContent.scrollHeight + 'px';
+            header.querySelector('i:last-child').classList.replace('fa-chevron-down', 'fa-chevron-up');
+        } else {
+            collapsibleContent.style.maxHeight = 0;
+            header.querySelector('i:last-child').classList.replace('fa-chevron-up', 'fa-chevron-down');
         }
     });
 });
